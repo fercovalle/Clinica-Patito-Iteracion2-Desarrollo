@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+
+    <%-include('../headerGeneral');%> 
+
+<body>
+    <%-include('../menus/MenuAdministracion');%>
+    <%-include('../menus/MenuSecretaria');%>
+    <h2>Ingrese la consulta</h2>
+    <div class="container">
+        <div class="formulario">
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">CUI Paciente</label>
+                    <input type="number" class="form-control" id="idPacient" placeholder="Ingrese CUI del Cliente" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="pacientDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Medico Referente</label>
+                    <input type="text" class="form-control" id="idMedic" placeholder="Seleccione al médico referente"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">No. de referencia de pago</label>
+                    <input type="number" class="form-control" id="pacientNumber" placeholder="Ingrese la referencia de pago">
+                </div>
+                <h2>Tipos de examen</h2>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Examen1" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Examen 1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="exam2" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Examen 2
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="exam3" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Examen 3
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn">Registrar Paciente</button>
+            </form>
+        </div>
+        <div class="lista">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">CUI</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Medico Ref</th>
+                    <th scope="col">Ref. Pago</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>45646548734-7</td>
+                    <td>14/01/2021</td>
+                    <td>Juan Diaz</td>
+                    <td>564687</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>32154645461-2</td>
+                    <td>14/01/2021</td>
+                    <td>Rodrigo Leiva</td>
+                    <td>465464</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>351456465465-1</td>
+                    <td>14/01/2021</td> 
+                    <td>Oscar Santis</td>  
+                    <td>Efectivo</td> 
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+    <%-include('../footerGeneral');%>
+</body>
+
+</html>

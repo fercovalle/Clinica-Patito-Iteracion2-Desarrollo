@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+
+  <%-include('../headerGeneral');%> 
+
+  <body>
+    <%-include('../menus/MenuSecretaria');%>
+    <%-include('../menus/MenuAdministracion');%>
+
+    <h1>Ingrese los datos del paciente</h1>
+    <form action="/crearPaciente" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">CUI</label>
+          <input type="number" class="form-control" name="cuiPaciente" placeholder="Ingrese CUI" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Nombres</label>
+          <input type="text" class="form-control" name="nombrePaciente" placeholder="Ingrese Nombres" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" name="apellidoPaciente" placeholder="Ingrese Apellidos" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Sexo</label>
+            <input class="form-control" list="datalistOptions" name="sexoPaciente" placeholder="1. Masculino 0. Femenino" required>
+            <datalist id="datalistOptions">
+              <option value="Hombre">
+              <option value="Mujer">
+              <option value="Otro">
+            </datalist>
+        </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" name="fechaPaciente" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Número Telefónico</label>
+            <input type="number" class="form-control" name="telefonoPaciente" placeholder="Ingrese Número Telefónico" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" name="correoPaciente" placeholder="Ingrese Correo Electrónico" required>
+          </div>
+        <button type="submit" class="btn btn-primary" id="btn">Registrar Paciente</button>
+      </form>
+      <div class="lista"></div>
+        <table class="table table-bordered table-striped text-center-mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">CUI</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Sexo</th>
+              <th scope="col">Fecha de Nac</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Acciones</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach((pacient)=>{ %>
+            <tr>
+              <td><%= pacient.id %></td>
+              <td><%= pacient.CUI %></td>
+              <td><%= pacient.nombre %></td>
+              <td><%= pacient.apellido %></td>
+              <% if(pacient.sexo===1){ %>
+                <td>M</td>
+              <% } else{ %>  
+                <td>F</td>
+             <% } %>
+              <td><%= pacient.fecha_nacimiento %></td>
+              <td><%= pacient.telefono %></td>
+              <td><%= pacient.correo %></td>
+              <br>
+              <br>
+              <td>
+                <a href="/EditarPaciente/<%= pacient.id %>" class="btn btn-success">Editar</a>
+              </td>
+            </tr>
+            <% }) %> 
+          </tbody>
+        </table>
+      </div>
+
+      <%-include('../footerGeneral');%>
+  </body>
+</html>

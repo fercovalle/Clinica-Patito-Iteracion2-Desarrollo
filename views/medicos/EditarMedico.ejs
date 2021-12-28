@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <%-include('../headerGeneral');%> 
+  <body>
+    <%-include('../menus/MenuAdministracion');%>
+    <%-include('../menus/MenuSecretaria');%>
+    <h1>Registre un Nuevo Médico</h1>
+    <form action="/EditarMedico" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Id</label>
+            <input type="number" class="form-control" name="id" value="<%= doctor.id %>" hidden>
+          </div> 
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nombre</label>
+          <input type="text" class="form-control" name="nombreMedico" value="<%= doctor.nombre %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Número Telefónico</label>
+            <input type="number" class="form-control" name="telefonoMedico" value="<%= doctor.telefono %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Número de Cuenta</label>
+            <input type="number" class="form-control" name="cuentaMedico" value="<%= doctor.numero_cuenta %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Estado</label>
+            <input type="number" min="0" max="1" class="form-control" list="datalistOptionsStatus" name="estadoMedico" value="<%= doctor.activo %>" placeholder="1.Activo 0.Inactivo"
+              required>
+            <datalist id="datalistOptionsStatus">
+              <option value="activo">
+              <option value="inactivo">
+            </datalist>
+          </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Porcentaje de Regalías</label>
+            <input type="number" class="form-control" name="regaliaMedico" value="<%= doctor.regalia %>" required>
+        </div>
+        <button type="submit" class="btn btn-primary" name="btn">Registrar Médico</button>
+      </form>
+      <%-include('../footerGeneral');%>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="es">
+
+    <%-include('../headerGeneral');%> 
+
+<body>
+    <%-include('../menus/MenuAdministracion');%>
+    <div class="container-fluid">
+        <form>
+            <h1>Editar Tipo de Muestra</h1>
+            <div class="mb-3">
+                <label for="sampleType" class=f orm-label>Nombre para tipo de muestra:</label>
+                <input type="text" class="form-control" id="sampleType" placeholder="Ingrese nombre del nuevo tipo de Muestra" required>
+            </div>
+            <div class="mb-3">
+                <label for="sampleTypeUnit" class="form-label">Unidad de medición (muestra):</label>
+                <input type="text" class="form-control" id="sampleTypeUnit" placeholder="Ingrese el nombre de la unidad de medida" required>
+            </div>
+            <div class="mb-3">
+                <label for="sampleTypeStatus" class="form-label">Estado de la muestra:</label>
+                <input class="form-control" list="datalistOptions" id="sampleTypeStatus" placeholder="Seleccione estado de muestra" required>
+                <datalist id="datalistOptions">
+                    <option value="Habilitado">
+                    <option value="Deshabilitado">
+                  </datalist>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <%-include('../footerGeneral');%>
+</body>
+
+</html>

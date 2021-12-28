@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <%-include('../headerGeneral');%> 
+  <body>
+    <%-include('../menus/MenuAdministracion');%>
+    <%-include('../menus/MenuSecretaria');%>
+    <h1>Registre un Nuevo Médico</h1>
+    <form action="/crearMedico" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nombre</label>
+          <input type="text" class="form-control" name="nombreMedico" placeholder="Ingrese nombre del médico" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Número Telefónico</label>
+            <input type="number" class="form-control" name="telefonoMedico" placeholder="Ingrese número del médico" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Número de Cuenta</label>
+            <input type="number" class="form-control" name="cuentaMedico" placeholder="Ingrese número de cuenta del médico" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Estado</label>
+          <input type="number" min="0" max="1" class="form-control" list="datalistOptionsStatus" name="estadoMedico" placeholder="1.Activo 0.Inactivo"
+            required>
+          <datalist id="datalistOptionsStatus">
+            <option value="activo">
+            <option value="inactivo">
+          </datalist>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Porcentaje de Regalías</label>
+            <input type="number" class="form-control" name="regaliaMedico" placeholder="Ingrese el porcentaje de regalías del médico" required>
+        </div>
+        <button type="submit" class="btn btn-primary" name="btn">Registrar Médico</button>
+      </form>
+      <div class="lista"></div>
+        <table class="table table-bordered table-striped text-center-mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th> 
+              <th scope="col">Teléfono</th>
+              <th scope="col">No.Cuenta</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Regalía(%)</th>
+              <th scope="col">Acciones</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach((doctor)=>{ %>
+            <tr>
+              <td><%= doctor.id %></td>
+              <td><%= doctor.nombre %></td>
+              <td><%= doctor.telefono %></td>
+              <td><%= doctor.numero_cuenta %></td>
+              <% if(doctor.activo===1){ %>
+                <td>Activo</td>
+              <% } else{ %>  
+                <td>Inactivo</td>
+             <% } %>
+              <td><%= doctor.regalia %></td>
+
+              <td>
+                <a href="/EditarMedico/<%= doctor.id %>" class="btn btn-success">Editar</a>
+              </td>
+            </tr>
+            <% }) %> 
+          </tbody>
+        </table>
+      </div>
+      <%-include('../footerGeneral');%>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<%-include('../headerGeneral');%>
+  <body>
+    <%-include('../menus/MenuAdministracion');%>
+    <% if(user){ %>
+      <div class="container">
+        <div class="formulario">
+          <h1>Edite los datos de un Usuario</h1>
+          <form action="/EditarUsuario" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Id</label>
+                <input type="number" class="form-control" id="id" name="id" value="<%= user.id %>" hidden>
+              </div>  
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Rol</label>
+              <input class="form-control" list="datalistOptions" name="rol" value="<%= user.rol %>" required>
+              <datalist id="datalistOptions">
+                <option value="administrador">
+                <option value="laboratorista">
+                <option value="secretaria">
+              </datalist>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombreUsuario" value="<%= user.nombre %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="claveUsuario" value="<%= user.clave %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Teléfono</label>
+              <input type="number" class="form-control" name="telefonoUsuario" value="<%= user.telefono %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" name="correoUsuario" value="<%= user.correo %>" required>
+            </div>
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Estado</label>
+                    <input type="number" min="0" max="1" class="form-control" list="datalistOptionsStatus" name="estadoUsuario" placeholder="1.Activo 0.Inactivo"
+                      required>
+                    <datalist id="datalistOptionsStatus">
+                      <option value="activo">
+                      <option value="inactivo">
+                    </datalist>
+                  </div>
+            <button type="submit" class="btn btn-primary" id="btnRegistrarUsuario">Editar Usuario</button>
+          </form>
+        </div>
+      </div>
+      <%-include('../footerGeneral');%>
+      <% } %>
+  </body>
+
+</html>

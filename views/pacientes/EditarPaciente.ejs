@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+
+  <%-include('../headerGeneral');%> 
+
+  <body>
+    <%-include('../menus/MenuSecretaria');%>
+    <%-include('../menus/MenuAdministracion');%>
+
+    <h1>Edite los datos del paciente</h1>
+    <form action="/EditarPaciente" method="POST"> 
+      <div class="mb-3">
+        <label class="form-label">#</label>
+        <input type="number" class="form-control" name="id" value="<%= pacient.id %>" hidden>
+      </div>  
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">CUI</label>
+          <input type="number" class="form-control" name="cuiPaciente" value="<%= pacient.CUI %>"  required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Nombres</label>
+          <input type="text" class="form-control" name="nombrePaciente" value="<%= pacient.nombre%>" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" name="apellidoPaciente" value="<%= pacient.apellido %>" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Sexo</label>
+            <input class="form-control" list="datalistOptions" name="sexoPaciente" value="<%= pacient.sexo %>" required>
+            <datalist id="datalistOptions">
+              <option value="Hombre">
+              <option value="Mujer">
+              <option value="Otro">
+            </datalist>
+        </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" name="fechaPaciente" value="<%= pacient.fecha_nacimiento %>" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Número Telefónico</label>
+            <input type="number" class="form-control" name="telefonoPaciente" value="<%= pacient.telefono %>" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" name="correoPaciente" value="<%= pacient.correo %>" required>
+          </div>
+        <button type="submit" class="btn btn-primary" id="btn">Editar Paciente</button>
+      </form>
+      
+      <%-include('../footerGeneral');%>
+  </body>
+</html>

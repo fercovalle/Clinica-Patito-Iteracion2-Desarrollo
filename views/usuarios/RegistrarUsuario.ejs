@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<%-include('../headerGeneral');%>
+  <body>
+    <%-include('../menus/MenuAdministracion');%>
+      <div class="container">
+        <div class="formulario">
+          <h1>Registre un Nuevo Usuario</h1>
+          <form action="/crearUsuario" method="POST">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Rol</label>
+              <input class="form-control" list="datalistOptions" name="rol" placeholder="Ingrese el rol del usuario"
+                required>
+              <datalist id="datalistOptions">
+                <option value="administrador">
+                <option value="laboratorista">
+                <option value="secretaria">
+              </datalist>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombreUsuario" placeholder="Ingrese el nombre del usuario"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="claveUsuario"
+                placeholder="Ingrese una contraseña para el usuario" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Teléfono</label>
+              <input type="number" class="form-control" name="telefonoUsuario"
+                placeholder="Ingrese el teléfono del usuario" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" name="correoUsuario" placeholder="Ingrese un correo de usuario" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Estado</label>
+              <input type="number" min="0" max="1" class="form-control" list="datalistOptionsStatus" name="estadoUsuario" placeholder="1.Activo 0.Inactivo"
+                required>
+              <datalist id="datalistOptionsStatus">
+                <option value="activo">
+                <option value="inactivo">
+              </datalist>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnRegistrarUsuario">Registrar Usuario</button>
+            <br>
+            <br>
+          </form>
+        </div>
+        <div class="lista"></div>
+        <table class="table table-bordered table-striped text-center-mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Rol</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach((user)=>{ %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.rol %></td>
+              <td><%= user.nombre %></td>
+              <td><%= user.telefono %></td>
+              <td><%= user.correo %></td>
+              <% if(user.activo===1){ %>
+                <td>Activo</td>
+              <% } else{ %>  
+                <td>Inactivo</td>
+             <% } %>
+                
+              <td>
+                <a href="/EditarUsuario/<%= user.id %>" class="btn btn-success">Editar</a>
+              </td>
+            </tr>
+            <% }) %> 
+          </tbody>
+        </table>
+      </div>
+      <%-include('../footerGeneral');%>
+  </body>
+
+</html>
